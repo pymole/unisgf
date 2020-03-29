@@ -2,14 +2,14 @@ from collection import Collection
 
 
 class Renderer:
-
-    def render_file(self, path, game_tree):
-        rendered_string = self.render_string(game_tree)
+    # TODO add typing for path-like objects
+    def render_file(self, path: str, collection: Collection):
+        rendered_string = self.render_string(collection)
 
         with open(path, 'w') as f:
             f.write(rendered_string)
 
-    def render_string(self, collection: Collection):
+    def render_string(self, collection: Collection) -> str:
         if not isinstance(collection, Collection):
             raise TypeError("Pass <Collection> instead of " + str(type(collection)))
 
@@ -30,7 +30,7 @@ class Renderer:
                 rendered_node = ';'
                 for property in cur_node.properties:
                     if not property.values:
-                        raise ValueError(f'Property {property.name} must have a value')
+                        raise ValueError(f'Property {property.identifier} must have a value')
 
                     rendered_values = '[' + ']['.join(str(value) for value in property.values) + ']'
 

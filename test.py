@@ -1,23 +1,24 @@
 from rendering import Renderer
 from game_tree import GameTree
 from collection import Collection
+from property import Property
 
 
 gt = GameTree()
 
 n = gt.get_root()
-n = n.add_child()
-n.add_property('AA', [1, 2, 3, 4])
-n.add_property('AV', [2, 4])
+n = n.create_child()
+n.create_property('AA', [1, 2, 3, 4])
+n.create_property('AV', [2, 4])
 
-n1 = n.add_child()
-n1.add_property('ASD', [2, 4])
+n1 = n.create_child()
+n1.create_property('ASD', [2, 4])
 
-n1 = n1.add_child()
-n1.add_property('D', [2, 4])
+n1 = n1.create_child()
+n1.create_property('D', [2, 4])
 
-n2 = n.add_child()
-n2.add_property('A', [1, 2, 4])
+n2 = n.create_child()
+n2.create_property('A', [1, 2, 4])
 
 collection = Collection()
 collection.add_game_tree(gt)

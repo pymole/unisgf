@@ -12,7 +12,7 @@ class Property:
         if values is None:
             values = []
 
-        self.values = values
+        self.values = list(values)
 
     def __str__(self):
         return self.identifier

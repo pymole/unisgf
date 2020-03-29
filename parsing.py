@@ -109,8 +109,6 @@ class Parser:
                         if not span_copier.is_ready():
                             span_copier.set_end(index)
 
-                        print('Span copier end is', span_copier.end)
-                        print('Span copier end is', span_copier.start)
                         # create new property
                         span_copier.set_start(span_copier.start + 1)
                         property_identifier = span_copier.copy(string)
@@ -186,10 +184,10 @@ class SpanCopier:
         self.end = None
 
     def is_ready(self) -> bool:
-        return self.start is not None and self.end is not None
+        return self.end is not None
 
     def is_active(self) -> bool:
-        return self.start is not None or self.end is not None
+        return self.start is not None
 
     def is_start_previous_to(self, index):
         return self.start + 1 == index

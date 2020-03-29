@@ -1,5 +1,7 @@
+from __future__ import annotations
 from exceptions import NodeAlreadyHasAProperty
 from property import Property
+from typing import Iterable, Optional
 
 
 class Node:
@@ -15,12 +17,12 @@ class Node:
 
         self.properties.append(property)
 
-    def create_property(self, property_identifier: str) -> Property:
-        property = Property(property_identifier)
+    def create_property(self, property_identifier: str, values: Optional[Iterable] = None) -> Property:
+        property = Property(property_identifier, values)
         self.add_property(property)
         return property
 
-    def create_child(self):
+    def create_child(self) -> Node:
         child = Node(self)
         self.children.append(child)
 
