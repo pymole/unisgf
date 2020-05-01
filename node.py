@@ -1,6 +1,6 @@
 from __future__ import annotations
-from exceptions import NodeAlreadyHasAProperty
 from property import Property
+from exceptions import NodeAlreadyHasAProperty
 from typing import Iterable, Optional
 
 
@@ -8,32 +8,37 @@ class Node:
     def __init__(self, parent):
         self.parent = parent
 
-        self.properties = []
+        self.__properties = {}
         self.children = []
 
-    def add_property(self, property: Property):
-        if self.has_property(property.identifier):
-            raise NodeAlreadyHasAProperty(property)
+    def __contains__(self, property_identifier: str):
+        return self.has_property(property_identifier)
 
-        self.properties.append(property)
+    def __getitem__(self, property_identifier: str):
+        return self.__properties[property_identifier]
+
+    def __setitem__(self, property_identifier: str, values: Iterable):
+        if self.has_property(property_identifier):
+            raise KeyError(f"Property with identifier '{property_identifier}' already exists.")
+
+        self.__properties[property_identifier] = Property(property_identifier, values)
 
     def create_property(self, property_identifier: str, values: Optional[Iterable] = None) -> Property:
         property = Property(property_identifier, values)
-        self.add_property(property)
+        self.__setitem__(property_identifier, values)
         return property
 
     def create_child(self) -> Node:
         child = Node(self)
         self.children.append(child)
-
         return child
 
     def has_property(self, property_identifier: str):
-        for property in self.properties:
-            if property.identifier == property_identifier:
-                return True
+        return property_identifier in self.__properties
 
-        return False
+    @property
+    def properties(self):
+        return self.__properties.values()
 
 
 class RootNode(Node):

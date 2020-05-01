@@ -1,15 +1,9 @@
-class Collection:
-    def __init__(self, game_trees=None):
-        if game_trees is None:
-            game_trees = []
+from game_tree import GameTree
 
-        self.game_trees = game_trees
 
-    def __iter__(self):
-        return iter(self.game_trees)
+class Collection(list):
+    def append(self, game_tree: GameTree):
+        if not isinstance(game_tree, GameTree):
+            raise TypeError("Collection must consist of game trees")
 
-    def add_game_tree(self, game_tree):
-        self.game_trees.append(game_tree)
-
-    def is_empty(self):
-        return len(self.game_trees) == 0
+        super().append(game_tree)

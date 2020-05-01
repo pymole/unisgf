@@ -32,7 +32,7 @@ class Renderer:
                     if not property.values:
                         raise ValueError(f'Property {property.identifier} must have a value')
 
-                    rendered_values = '[' + ']['.join(str(value) for value in property.values) + ']'
+                    rendered_values = '[' + ']['.join(value.render() for value in property.values) + ']'
 
                     rendered_property = property.identifier + rendered_values
                     rendered_node += rendered_property

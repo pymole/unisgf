@@ -90,7 +90,7 @@ class Parser:
                         raise SyntaxError("Unexpected ')' parenthesis at position " + str(index))
 
                     if parentheses_balance == 0:
-                        collection.add_game_tree(cur_game_tree)
+                        collection.append(cur_game_tree)
                     else:
                         cur_node = depth_stack.pop()
 
@@ -158,7 +158,7 @@ class Parser:
         if parentheses_balance != 0:
             raise SyntaxError('Not all parentheses are closed')
 
-        if collection.is_empty():
+        if not collection:
             raise SyntaxError('Collection is empty')
 
         return collection

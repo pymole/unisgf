@@ -8,3 +8,7 @@ class NodeAlreadyHasAProperty(Exception):
 class ParenthesesSyntaxError(Exception):
     def __init__(self, position):
         super().__init__('Parentheses syntax error at position: ' + str(position))
+
+
+class ValidationError(Exception):
+    pass
