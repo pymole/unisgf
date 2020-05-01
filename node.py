@@ -18,14 +18,14 @@ class Node:
         return self.__properties[property_identifier]
 
     def __setitem__(self, property_identifier: str, values: Iterable):
+        self.create_property(property_identifier, values)
+
+    def create_property(self, property_identifier: str, values: Optional[Iterable] = None) -> Property:
         if self.has_property(property_identifier):
             raise KeyError(f"Property with identifier '{property_identifier}' already exists.")
 
-        self.__properties[property_identifier] = Property(property_identifier, values)
-
-    def create_property(self, property_identifier: str, values: Optional[Iterable] = None) -> Property:
         property = Property(property_identifier, values)
-        self.__setitem__(property_identifier, values)
+        self.__properties[property_identifier] = property
         return property
 
     def create_child(self) -> Node:

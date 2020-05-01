@@ -1,7 +1,9 @@
 from grammar_utils import (
     is_ucletters, is_digit, is_simple_text,
     is_none, is_number, is_real,
-    is_double, is_color, is_text
+    is_double, is_color, is_text,
+    whitespaces, linebreakers,
+    delete_escapes
 )
 
 
@@ -52,8 +54,6 @@ class NoneValue(PropertyValue):
         raise ValueError
 
 
-
-
 class Number(PropertyValue):
     def validate(self, data: str):
         if not is_number(data):
@@ -90,8 +90,18 @@ class Text(PropertyValue):
     def validate(self, data: str):
         if not is_text(data):
             raise ValueError
-        # TODO добавить удаление пробелов
+
+        # replace all whitespace other then linebreakers with space
+        data = ''.join(char if char not in (whitespaces - linebreakers) else ' ' for char in data)
+
+        # save initial data with escape symbols to proper rendering
+        self.__value_with_escape_symbols = data
+
+        data = delete_escapes(data)
         return data
+
+    def render(self):
+        return self.__value_with_escape_symbols
 
 
 class SimpleText(PropertyValue):
@@ -99,8 +109,17 @@ class SimpleText(PropertyValue):
         if not is_simple_text(data):
             raise ValueError
 
-        # TODO добавить удаление пробелов
+        # replaces all whitespace with single space
+        data = ''.join(char if char not in whitespaces else ' ' for char in data)
+
+        # save initial data with escape symbols to proper rendering
+        self.__value_with_escape_symbols = data
+
+        data = delete_escapes(data)
         return data
+
+    def render(self):
+        return self.__value_with_escape_symbols
 
 
 validation_order = [

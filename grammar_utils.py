@@ -1,4 +1,5 @@
 import string
+from itertools import islice
 
 
 """
@@ -25,10 +26,11 @@ Compose    -> ValueType ":" ValueType
 
 uc_letters = set(string.ascii_uppercase)
 linebreakers = set('\n\r')
+whitespaces = set(' \t\r\n\v')
 
 
 def is_whitespace(s: str) -> bool:
-    return s in (' ', '\t', '\r', '\n')
+    return s in whitespaces
 
 
 def is_ucletters(s: str) -> bool:
@@ -72,3 +74,24 @@ def is_text(s: str) -> bool:
 
 def is_simple_text(s: str) -> bool:
     return not is_text(s)
+
+
+def delete_escapes(s: str) -> str:
+    # get escapes and delete all
+    is_escaping = False
+    escape_indexes = [-1]
+
+    for index, char in enumerate(s):
+        if is_escaping:
+            is_escaping = False
+        elif char == '\\':
+            is_escaping = True
+            escape_indexes.append(index)
+
+    escape_indexes.append(len(s))
+
+    data = ''.join(s[i1+1:i2] for i1, i2 in zip(
+        islice(escape_indexes, 0, len(escape_indexes) - 1, 1), islice(escape_indexes, 1, len(escape_indexes), 1)
+    ))
+
+    return data

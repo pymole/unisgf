@@ -29,7 +29,6 @@ class DotsMove(PropertyValue):
 
 property_value.validation_order = [DotsMove] + property_value.validation_order
 
-
 gt = GameTree()
 
 n = gt.get_root()
@@ -48,7 +47,6 @@ n2['A'] = [1, 2, 4]
 n2['AD'] = ['aS']
 n2['AD'].add_value('As')
 
-print(n2['AD'].values[0].value)
 collection = Collection()
 collection.append(gt)
 
@@ -59,7 +57,9 @@ print(renderer.render_file('test.txt', collection))
 from parsing import Parser
 
 data = """
-()
+(;AW[\[hh\t])
 """
 p = Parser()
 collection = p.parse_string(data)
+print(collection[0].get_root().children)
+print(renderer.render_string(collection))

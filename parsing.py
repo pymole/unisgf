@@ -39,7 +39,7 @@ class Parser:
         span_copier = SpanCopier()
 
         for index, char in enumerate(string):
-            print(index, char)
+            # print(index, char)
             if is_escaping:
                 is_escaping = False
 
@@ -47,7 +47,7 @@ class Parser:
                 is_escaping = True
 
             elif is_whitespace(char):
-                # if searching for new property start index should shift until
+                # if searching for a new property start index should shift until
                 # property identifier is reached
                 if property_ident_search and not span_copier.is_ready():
                     # pass whitespace, move start
