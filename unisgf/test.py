@@ -3,11 +3,12 @@ from unisgf.game_tree import GameTree
 from unisgf.collection import Collection
 from unisgf.property import Property
 from unisgf.property_value import PropertyValue
+from unisgf import property_value
 from string import ascii_letters
 
 
 class DotsMove(PropertyValue):
-    def validate(self, data: str):
+    def from_string(self, data: str):
         if len(data) != 2:
             raise ValueError
 
@@ -53,7 +54,7 @@ renderer = Renderer()
 print(renderer.render_string(collection))
 print(renderer.render_file('test.txt', collection))
 
-from parsing import Parser
+from unisgf.parsing import Parser
 
 data = """
 (;AW[\[hh\t])
