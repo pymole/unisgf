@@ -1,4 +1,4 @@
-from node import RootNode
+from unisgf.node import RootNode
 
 
 class GameTree:

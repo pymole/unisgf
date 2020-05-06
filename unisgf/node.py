@@ -1,6 +1,6 @@
 from __future__ import annotations
-from property import Property
-from exceptions import NodeAlreadyHasAProperty
+from unisgf.property import Property
+from unisgf.exceptions import NodeAlreadyHasAProperty
 from typing import Iterable, Optional
 
 

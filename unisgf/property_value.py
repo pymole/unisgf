@@ -1,4 +1,4 @@
-from grammar_utils import (
+from unisgf.grammar_utils import (
     is_ucletters, is_digit, is_simple_text,
     is_none, is_number, is_real,
     is_double, is_color, is_text,

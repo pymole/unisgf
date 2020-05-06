@@ -1,4 +1,4 @@
-from game_tree import GameTree
+from unisgf.game_tree import GameTree
 
 
 class Collection(list):

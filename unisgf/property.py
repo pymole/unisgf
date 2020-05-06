@@ -1,5 +1,5 @@
-from grammar_utils import is_ucletters
-from property_value import validate_property_value, PropertyValue
+from unisgf.grammar_utils import is_ucletters
+from unisgf.property_value import validate_property_value, PropertyValue
 from typing import Iterable, Any, Optional
 
 

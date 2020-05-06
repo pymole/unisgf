@@ -1,6 +1,6 @@
-from game_tree import GameTree
-from collection import Collection
-from grammar_utils import is_whitespace
+from unisgf.game_tree import GameTree
+from unisgf.collection import Collection
+from unisgf.grammar_utils import is_whitespace
 
 
 class Parser:

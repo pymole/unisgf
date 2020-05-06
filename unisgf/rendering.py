@@ -1,4 +1,4 @@
-from collection import Collection
+from unisgf.collection import Collection
 
 
 class Renderer:

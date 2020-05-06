@@ -1,9 +1,8 @@
-from rendering import Renderer
-from game_tree import GameTree
-from collection import Collection
-from property import Property
-from property_value import PropertyValue
-import property_value
+from unisgf.rendering import Renderer
+from unisgf.game_tree import GameTree
+from unisgf.collection import Collection
+from unisgf.property import Property
+from unisgf.property_value import PropertyValue
 from string import ascii_letters
 
 
