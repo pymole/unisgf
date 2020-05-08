@@ -7,8 +7,10 @@ from unisgf import property_value
 from string import ascii_letters
 
 
+
 class DotsMove(PropertyValue):
-    def from_string(self, data: str):
+    @staticmethod
+    def validate_string(data: str):
         if len(data) != 2:
             raise ValueError
 
@@ -16,12 +18,23 @@ class DotsMove(PropertyValue):
         x = ascii_letters.find(x)
         if x == -1:
             return ValueError
-
         y = ascii_letters.find(y)
         if y == -1:
             return ValueError
 
         return x, y
+
+    @staticmethod
+    def validate_value(value):
+        try:
+            x, y = value
+        except Exception:
+            raise ValueError
+
+        if not isinstance(x, int) or not isinstance(y, int) or x < 0 or y < 0:
+            raise ValueError
+
+        return value
 
     def render(self):
         return ascii_letters[self.value[0]] + ascii_letters[self.value[1]]

@@ -6,7 +6,7 @@ from unisgf.grammar_utils import (
     delete_escapes
 )
 
-
+# TODO Think how to do without static methods
 class PropertyValue:
     def __init__(self, value):
         self.value = type(self).validate_value(value)
@@ -177,7 +177,7 @@ class Text(PropertyValue):
 
 class SimpleText(PropertyValue):
     def __init__(self, value):
-        self.value, self.value_with_escapes = Text.validate_value(value)
+        self.value, self.value_with_escapes = SimpleText.validate_value(value)
 
     @classmethod
     def from_string(cls, data: str):
@@ -221,6 +221,3 @@ def validate_property_value_from_string(s: str) -> PropertyValue:
             pass
 
     raise ValueError
-
-
-print(type(validate_property_value_from_string('W')))
