@@ -6,6 +6,7 @@ from unisgf.property_value import PropertyValue
 from unisgf import property_value
 from string import ascii_letters
 
+from unisgf.grammar_utils import is_simple_text
 
 
 class DotsMove(PropertyValue):

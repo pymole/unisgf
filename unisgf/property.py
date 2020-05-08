@@ -1,5 +1,5 @@
 from unisgf.grammar_utils import is_ucletters
-from unisgf.property_value import validate_property_value_from_string, PropertyValue
+from unisgf.property_value import validate_property_value, PropertyValue
 from typing import Iterable, Any, Optional
 
 
@@ -26,7 +26,7 @@ class Property:
 
     def add_value(self, value: Any):
         if not isinstance(value, PropertyValue):
-            value = validate_property_value_from_string(value)
+            value = validate_property_value(value)
 
         self.values.append(value)
 

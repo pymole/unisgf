@@ -198,7 +198,7 @@ class SimpleText(PropertyValue):
 
     @staticmethod
     def validate_value(value):
-        return Text.validate_string(value)
+        return SimpleText.validate_string(value)
 
     def render(self):
         return self.value_with_escapes
@@ -217,6 +217,16 @@ def validate_property_value_from_string(s: str) -> PropertyValue:
     for value_class in validation_order:
         try:
             return value_class.from_string(s)
+        except ValueError:
+            pass
+
+    raise ValueError
+
+
+def validate_property_value(value) -> PropertyValue:
+    for value_class in validation_order:
+        try:
+            return value_class(value)
         except ValueError:
             pass
 
