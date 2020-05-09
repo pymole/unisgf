@@ -39,8 +39,8 @@ class Renderer:
 
                 rendered_string += rendered_node
 
-                # exit group if it is the last node has no children
-                if len(cur_node.children) == 0:
+                # exit if this node is in a group and is the last (has no children)
+                if cur_node.parent is not None and len(cur_node.parent.children) > 1 and len(cur_node.children) == 0:
                     rendered_string += ')'
 
                 to_check += reversed(cur_node.children)

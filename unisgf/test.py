@@ -47,19 +47,20 @@ gt = GameTree()
 
 n = gt.get_root()
 n = n.create_child()
-n['AA'] = [1, 2, 3, 4]
-n['AV'] = [2, 4]
-
-n1 = n.create_child()
-n1['ASD'] = [2, 4]
-
-n1 = n1.create_child()
-n1['D'] = [2, 4]
-
-n2 = n.create_child()
-n2['A'] = [1, 2, 4]
-n2['AD'] = ['aS']
-n2['AD'].add_value('As')
+n['AA'] = [DotsMove((0, 0))]
+# # n['AA'] = [DotsMove((0, 0)), 1, 2, 3, 4]
+# n['AV'] = [2, 4]
+#
+# n1 = n.create_child()
+# n1['ASD'] = [2, 4]
+#
+# n1 = n1.create_child()
+# n1['D'] = [2, 4]
+#
+# n2 = n.create_child()
+# n2['A'] = [1, 2, 4]
+# n2['AD'] = ['aS']
+# n2['AD'].add_value('As')
 
 collection = Collection()
 collection.append(gt)
