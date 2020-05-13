@@ -69,6 +69,12 @@ renderer = Renderer()
 print(renderer.render_string(collection))
 print(renderer.render_file('test.txt', collection))
 
+collection1 = Collection()
+collection1.append(gt)
+collection2 = Collection()
+collection2.append(gt)
+print(type(collection1 + collection2))
+
 from unisgf.parsing import Parser
 
 data = """
@@ -78,3 +84,6 @@ p = Parser()
 collection = p.parse_string(data)
 print(collection[0].get_root().children)
 print(renderer.render_string(collection))
+
+
+
