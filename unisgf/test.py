@@ -73,7 +73,8 @@ collection1 = Collection()
 collection1.append(gt)
 collection2 = Collection()
 collection2.append(gt)
-print(type(collection1 + collection2))
+collection1 += collection2
+print(len(collection1))
 
 from unisgf.parsing import Parser
 
