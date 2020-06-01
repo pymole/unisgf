@@ -4,6 +4,7 @@ from unisgf.exceptions import NodeAlreadyHasAProperty
 from typing import Iterable, Optional
 
 
+# TODO __iadd__
 class Node:
     def __init__(self, parent):
         self.parent = parent

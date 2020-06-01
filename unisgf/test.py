@@ -78,12 +78,14 @@ print(len(collection1))
 
 from unisgf.parsing import Parser
 
-data = """
-(;AW[\[hh\t])
-"""
+# data = """
+# (;AW[\[hh\t])
+# """
+
+data = '(;RE[0];B[1])'
 p = Parser()
 collection = p.parse_string(data)
-print(collection[0].get_root().children)
+print(type(collection[0].get_root()['RE'].values[0]))
 print(renderer.render_string(collection))
 
 
