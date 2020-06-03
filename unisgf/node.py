@@ -1,6 +1,4 @@
-from __future__ import annotations
 from unisgf.property import Property
-from unisgf.exceptions import NodeAlreadyHasAProperty
 from typing import Iterable, Optional
 
 
@@ -29,7 +27,7 @@ class Node:
         self.__properties[property_identifier] = property
         return property
 
-    def create_child(self) -> Node:
+    def create_child(self) -> 'Node':
         child = Node(self)
         self.children.append(child)
         return child
