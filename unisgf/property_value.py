@@ -50,7 +50,7 @@ class UCLetter(PropertyValue):
     @staticmethod
     def validate_value(value):
         # same as from_string()
-        UCLetter.validate_string(value)
+        UCLetter.validate_string(str(value))
 
 
 class Digit(PropertyValue):
@@ -143,7 +143,7 @@ class Color(PropertyValue):
 
     @staticmethod
     def validate_value(value):
-        return Color.validate_string(value)
+        return Color.validate_string(str(value))
 
 
 class Text(PropertyValue):
@@ -169,7 +169,7 @@ class Text(PropertyValue):
 
     @staticmethod
     def validate_value(value):
-        return Text.validate_string(value)
+        return Text.validate_string(str(value))
 
     def render(self):
         return self.value_with_escapes
@@ -198,7 +198,7 @@ class SimpleText(PropertyValue):
 
     @staticmethod
     def validate_value(value):
-        return SimpleText.validate_string(value)
+        return SimpleText.validate_string(str(value))
 
     def render(self):
         return self.value_with_escapes
